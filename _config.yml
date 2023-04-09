@@ -1,7 +1,7 @@
 
 # -----
 # Build
-
+prefix: '/proses' 
 Timezone: Etc/UTC
 
 collections:
