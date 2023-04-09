@@ -7,7 +7,7 @@ Timezone: Etc/UTC
 collections:
   novels:
     output: true
-    permalink: /proses/:path/
+    permalink: /:path/
   
 paginate: 10
 permalink: pretty
