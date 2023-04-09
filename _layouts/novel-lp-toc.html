@@ -141,7 +141,7 @@ background: #eeeeee;
                     {% for post in docs %}
                     {% if post.index and post.url contains 'lp' %}
                     <li>
-                        <a href="{{post.url}}">{{post.shortname}}{{ post.index }}. {{post.title}}</a>
+                        <a href="{{site.prefix}}{{post.url}}">{{post.shortname}}{{ post.index }}. {{post.title}}</a>
                     </li>
                     {%endif%}
                     {% endfor %}
