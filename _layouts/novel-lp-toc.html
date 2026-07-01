@@ -9,29 +9,29 @@
 <body bgcolor="#eeeeee" text="#141414" style="margin:0;padding:0;background-color:#eeeeee;color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
     <div style="max-width:30rem;margin:0 auto;">
         <div style="padding:15px;">
-            <div style="position:relative;">
-                <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;">
+            <div style="position:relative;min-height:98px;margin-bottom:8px;">
+                <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;z-index:1;">
                     <svg aria-hidden="true" width="96" height="48" viewBox="0 0 96 48" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;">
                         <path d="M0 48 L45 3 L49 3 L4 48 Z" fill="#268f04"></path>
                     </svg>
                     <span style="position:relative;display:block;height:3rem;line-height:3rem;text-indent:6px;color:#141414;-webkit-text-fill-color:#141414;">目录</span>
                 </div>
-                <h2 style="height:50px;margin:43px 0 0 65px;padding:0;font-size:17px;font-weight:normal;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#141414;-webkit-text-fill-color:#141414;">Living Project / 不可接触的</h2>
-                <ul style="margin:0;padding:0;list-style:none;">
-                    {% for collection in site.collections %}
-                    {% if collection.label == "novels" %}
-                        {% assign docs = collection.docs | sort: 'index'  %}
-                        {% for post in docs %}
-                        {% if post.index and post.url contains 'lp' %}
-                    <li style="margin:0 0 12px 0;padding:8px 14px;background-color:#eeeeee;border:1px solid darkgray;border-radius:11px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:25px;color:#141414;-webkit-text-fill-color:#141414;">
-                        <a href="{{ post.url | relative_url }}" style="display:block;text-decoration:none;color:#141414;-webkit-text-fill-color:#141414;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
-                    </li>
-                        {% endif %}
-                        {% endfor %}
+                <h2 style="display:block;margin:43px 0 0 65px;padding:0;min-height:50px;line-height:50px;font-size:17px;font-weight:normal;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#141414;-webkit-text-fill-color:#141414;">Living Project / 不可接触的</h2>
+            </div>
+            <ul style="margin:0;padding:0;list-style:none;">
+                {% for collection in site.collections %}
+                {% if collection.label == "novels" %}
+                    {% assign docs = collection.docs | sort: 'index'  %}
+                    {% for post in docs %}
+                    {% if post.index and post.url contains 'lp' %}
+                <li style="margin:0 0 12px 0;padding:8px 14px;background-color:#eeeeee;border:1px solid darkgray;border-radius:11px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:25px;color:#141414;-webkit-text-fill-color:#141414;">
+                    <a href="{{ post.url | relative_url }}" style="display:block;text-decoration:none;color:#141414;-webkit-text-fill-color:#141414;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                </li>
                     {% endif %}
                     {% endfor %}
-                </ul>
-            </div>
+                {% endif %}
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </body>
