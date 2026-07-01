@@ -1,5 +1,0 @@
-# Overrides for the static mirror build (see .github/workflows/mirror.yml).
-# Empty baseurl so the site works on Surge/Cloudflare and as a local zip.
-url: 'https://proses-lp.surge.sh'
-baseurl: ''
-prefix: ''
