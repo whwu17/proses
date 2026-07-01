@@ -9,11 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#f8f8f8" />
 </head>
-<body bgcolor="#eeeeee" text="#141414" style="margin:0;background-color:#eeeeee;color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
-    <div style="max-width:30rem;margin:0 auto;">
-        <div style="padding:15px;position:relative;">
-            <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;text-indent:6px;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
-            <h2 style="height:50px;margin:43px 0 12px 65px;padding:0;font-size:17px;font-weight:normal;line-height:50px;text-align:left;color:#141414;background-color:#eeeeee;-webkit-text-fill-color:#141414;">Dreaming Project / 可以接触的</h2>
+<body bgcolor="#eeeeee" text="#444444" style="margin:0;max-width:100%;background-color:#eeeeee;color:#444444;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:18px;line-height:1.85;-webkit-text-fill-color:#444444;">
+    <div style="margin:0 25px;font-size:18px;max-width:100%;">
+        <div style="max-width:30rem;margin:0 auto;position:relative;">
+            <div style="position:absolute;top:38px;left:0;height:3rem;width:5rem;text-indent:0;color:#444444;-webkit-text-fill-color:#444444;background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+            <h1 style="margin:18px 0;padding:40px 0 18px 57px;font-size:18px;font-weight:700;line-height:1.42;color:#444444;background:transparent;-webkit-text-fill-color:#444444;text-align:left;">Dreaming Project / 可以接触的</h1>
             <ul style="margin:0;padding:0;list-style:none;">
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
@@ -21,7 +21,7 @@
                 {% for post in docs %}
                 {% if post.index and post.url contains 'dp' %}
                 <li style="margin:0 0 12px 0;list-style:none;">
-                    <a href="{{ post.url | relative_url }}" style="display:block;font-family:'IBM Plex Sans','Segoe UI',sans-serif;font-size:15px;line-height:25px;padding:8px 14px;background-color:#eeeeee;color:#141414;border:1px solid darkgray;border-radius:11px;text-decoration:none;-webkit-text-fill-color:#141414;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                    <a href="{{ post.url | relative_url }}" style="display:block;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:16px;line-height:25px;padding:8px 14px;background-color:#eeeeee;color:#555555;border:1px solid darkgray;border-radius:11px;text-decoration:none;-webkit-text-fill-color:#555555;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
                 </li>
                 {% endif %}
                 {% endfor %}
