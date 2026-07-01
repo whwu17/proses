@@ -31,7 +31,7 @@ jobs:
       - name: Build for jsDelivr
         # jsDelivr serves files at /gh/<user>/<repo>@<branch>/<path>
         # so Jekyll links must include that prefix to resolve on cdn.jsdelivr.net.
-        run: bundle exec jekyll build --baseurl "/gh/whwu17/proses@gh-pages" --url "https://cdn.jsdelivr.net"
+        run: bundle exec jekyll build --config _config.yml,_config_mirror.yml
         env:
           JEKYLL_ENV: production
 
