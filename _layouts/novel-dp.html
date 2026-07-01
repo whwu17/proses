@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Living Project</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Living Project</title>
     <!-- <link rel="manifest" href="/manifest.json"> -->
     <meta name="theme-color" content="#f8f8f8" />
     <style>
+    html { color-scheme: light; }
+
     @media print {
 
         *,
@@ -177,6 +178,7 @@
         margin: 0;
         max-width: 100%;
         background: #eeeeee;
+        -webkit-text-fill-color: #444;
     }
     ul p{
         text-indent: 0;
@@ -186,8 +188,14 @@
     }
     /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
 
-    p,
-    *:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
+    .main p,
+    .main h1,
+    .main h2,
+    .main h3,
+    .main h4,
+    .main h5,
+    .main h6,
+    .main button {
         margin: 1rem auto 1rem;
         max-width: 30rem;
         padding: .25rem;
@@ -225,7 +233,7 @@
         height: 98%;
         position: absolute;
         width: 100%;
-        z-index: -1;
+        z-index: 0;
     }
 
     blockquote p:before {
@@ -294,14 +302,11 @@
     }
 
     .decor {
-        background: linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);
         height: 3rem;
         width: 5rem;
         position: absolute;
         top: 38px;
-        /* left: 25px; */
         text-indent: 0px;
-
     }
 
     #mySidenav a {
@@ -352,14 +357,14 @@
     </style>
 </head>
 
-<body>
+<body bgcolor="#eeeeee" text="#444444">
 
     <!-- <div id="mySidenav" class="sidenav">
         <a href="/novels/toc" id="content">目录</a>
         <a href="/novels/toc" id="share">分享</a> 
     </div> -->
     <div class="main">
-        <div class="decor">DP{{page.index }}</div>
+        <div class="decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">DP{{page.index }}</div>
         <button><a href="{{ '/dp/toc/' | relative_url }}">目录</a></button>
         {{content}}
     </div>
@@ -374,10 +379,12 @@
         e.getElementsByTagName('p')[0].innerHTML = tt;
     }
     let h1ele=document.getElementsByTagName('h1')[0]
+    if (h1ele) {
     let news=document.createElement('div')
     news.style='text-align: end;margin-right: 9px;font-size: small;'
     news.innerHTML='◻ 忆·墨'
     h1ele.after(news)
+    }
     </script>
 </body>
 
