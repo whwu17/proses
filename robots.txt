@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://cdn.jsdelivr.net/sitemap.xml
+Sitemap: https://proses-lp.surge.sh/sitemap.xml
