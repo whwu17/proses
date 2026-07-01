@@ -133,7 +133,10 @@ background: #eeeeee;
                 <!-- <button><a href="#" id="share">分享</a></button> -->
                 <h2>Living Project / 不可接触的</h2>
                 <p style="font-size:13px;color:#666;margin:8px 0 16px 65px;line-height:1.5;">
-                无法打开？<a href="https://cdn.jsdelivr.net/gh/whwu17/proses@gh-pages/lp/toc/index.html">使用 jsDelivr 镜像</a>
+                无法打开？
+                <a href="https://proses-lp.surge.sh/lp/toc/">在线镜像</a>
+                ·
+                <a href="https://github.com/whwu17/proses/releases/latest/download/proses-site.zip">下载离线版</a>
                 </p>
                 
                 {% for collection in site.collections %}
@@ -143,7 +146,7 @@ background: #eeeeee;
                     {% for post in docs %}
                     {% if post.index and post.url contains 'lp' %}
                     <li>
-                        <a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                        <a href="../{{ post.index }}/">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
                     </li>
                     {%endif%}
                     {% endfor %}

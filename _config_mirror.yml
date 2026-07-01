@@ -1,4 +1,5 @@
-# Overrides for the jsDelivr CDN mirror build (see .github/workflows/mirror.yml).
-url: 'https://cdn.jsdelivr.net'
-baseurl: '/gh/whwu17/proses@gh-pages'
-prefix: '/gh/whwu17/proses@gh-pages'
+# Overrides for the static mirror build (see .github/workflows/mirror.yml).
+# Empty baseurl so the site works on Surge/Cloudflare and as a local zip.
+url: 'https://proses-lp.surge.sh'
+baseurl: ''
+prefix: ''
