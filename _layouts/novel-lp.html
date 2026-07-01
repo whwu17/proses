@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
     <title>Living Project - {{page.index }}</title>
     <meta name="theme-color" content="#f8f8f8" />
     <style>
+    html {
+        color-scheme: light;
+    }
+
     @media print {
 
         *,
@@ -72,7 +77,6 @@
     html {
         font-size: 12px;
         margin: 0 25px;
-        -webkit-text-size-adjust: 100%;
     }
 
     @media screen and (min-width: 32rem) and (max-width: 48rem) {
@@ -172,26 +176,20 @@
 
     body {
         color: #444;
-        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
         margin: 0;
         max-width: 100%;
         background: #eeeeee;
+        -webkit-text-fill-color: #444;
     }
 
-    ul p,
-    ol p {
-        text-indent: 0;
-    }
-
-    img {
-        margin-left: -30px;
-    }
-
-    /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
-
-    p,
-    *:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
-        margin: 1rem auto 1rem;
+    .main p,
+    .main h1,
+    .main h2,
+    .main h3,
+    .main h4,
+    .main blockquote {
+        margin: 1rem auto;
         max-width: 30rem;
         padding: .25rem;
     }
@@ -211,46 +209,21 @@
 
     blockquote p {
         background: #ffffff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 1px solid #cccccc;
         margin: 26px auto 0;
         max-width: 550px;
-        /* min-height: 300px; */
         padding: 24px;
-        position: relative;
-        width: 80%;
         text-indent: 0;
-        /* content: "aaa" */
     }
 
-    blockquote p:before,
-    blockquote p:after {
-        content: "";
-        height: 98%;
-        position: absolute;
-        width: 100%;
-        z-index: -1;
+    ul p,
+    ol p {
+        text-indent: 0;
     }
 
-    blockquote p:before {
-        background: #fafafa;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        left: -5px;
-        top: 4px;
-        transform: rotate(-2.7deg);
-        -webkit-transform: rotate(-2.7deg);
-        -moz-transform: rotate(-2.7deg);
-    }
-
-    blockquote p:after {
-        background: #f6f6f6;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-        right: -3px;
-        top: 1px;
-        transform: rotate(1.4deg);
-        -webkit-transform: rotate(1.4deg);
-        -moz-transform: rotate(1.4deg);
+    img {
+        margin-left: -30px;
+        max-width: 100%;
     }
 
     ul li {
