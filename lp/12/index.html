@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5DS6WE929L');
+    </script>
+    <meta charset="UTF-8" />
+    <title>Living Project - 12</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <meta name="theme-color" content="#f8f8f8" />
+</head>
+<style>
+    @media print {
+
+        *,
+        *:before,
+        *:after {
+            background: transparent !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        a,
+        a:visited {
+            text-decoration: underline;
+        }
+
+        a[href]:after {
+            content: " (" attr(href) ")";
+        }
+
+        abbr[title]:after {
+            content: " (" attr(title) ")";
+        }
+
+        a[href^="#"]:after,
+        a[href^="javascript:"]:after {
+            content: "";
+        }
+
+
+        blockquote {
+            /* border: 1px solid #999; */
+            /* page-break-inside: avoid; */
+            margin: 0
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tr,
+        img {
+            page-break-inside: avoid;
+        }
+
+        img {
+            max-width: 100% !important;
+        }
+
+        p,
+        h2,
+        h3 {
+            orphans: 3;
+            widows: 3;
+        }
+
+        h2,
+        h3 {
+            page-break-after: avoid;
+        }
+    }
+
+    html {
+        font-size: 12px;
+        margin: 0 25px;
+    }
+
+    @media screen and (min-width: 32rem) and (max-width: 48rem) {
+        html {
+            font-size: 15px;
+            margin: 0 25px;
+        }
+    }
+
+    @media screen and (min-width: 48rem) {
+        html {
+            font-size: 16px;
+            margin: 0 25px;
+        }
+    }
+
+    body {
+        line-height: 1.85;
+    }
+
+    p,
+    .splendor-p {
+        font-size: 16px;
+        margin-top: 1.3rem;
+        text-indent: 28px;
+    }
+
+    h1,
+    .splendor-h1,
+    h2,
+    .splendor-h2,
+    h3,
+    .splendor-h3,
+    h4,
+    .splendor-h4 {
+        margin: 1.414rem 0 .5rem;
+        font-weight: inherit;
+        line-height: 1.42;
+    }
+
+    h1,
+    .splendor-h1 {
+        margin-top: 0;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    h2,
+    .splendor-h2 {
+        font-size: 1rem;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h3,
+    .splendor-h3 {
+        font-size: 0.9rem;
+        font-weight: 600;
+    } /* for LP12 only.  */
+
+    h4,
+    .splendor-h4 {
+        font-size: 0.9rem;
+    }
+
+    h5,
+    .splendor-h5 {
+        font-size: 1.2rem;
+    }
+
+    h6,
+    .splendor-h6 {
+        font-size: .88rem;
+    }
+
+    small,
+    .splendor-small {
+        font-size: .707em;
+    }
+
+    /* https://github.com/mrmrs/fluidity */
+
+    img,
+    canvas,
+    iframe,
+    video,
+    svg,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    html {
+        font-size: 18px;
+        max-width: 100%;
+    }
+
+    body {
+        color: #444;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        max-width: 100%;
+        background: #eeeeee;
+    }
+
+    ul p,
+    ol p {
+        text-indent: 0;
+    }
+
+    img {
+        margin-left: -30px;
+    }
+
+    /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
+
+    p,
+    *:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
+        margin: 1rem auto 1rem;
+        max-width: 30rem;
+        padding: .25rem;
+    }
+
+    div {
+        /* width: 100%; */
+
+    }
+
+    div img {
+        width: 100%;
+    }
+
+    blockquote {
+        margin: 50px auto 75px;
+    }
+
+    blockquote p {
+        background: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin: 26px auto 0;
+        max-width: 550px;
+        /* min-height: 300px; */
+        padding: 24px;
+        position: relative;
+        width: 80%;
+        text-indent: 0;
+        /* content: "aaa" */
+    }
+
+    blockquote p:before,
+    blockquote p:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+    blockquote p:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.7deg);
+        -webkit-transform: rotate(-2.7deg);
+        -moz-transform: rotate(-2.7deg);
+    }
+
+    blockquote p:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+        -webkit-transform: rotate(1.4deg);
+        -moz-transform: rotate(1.4deg);
+    }
+
+    ul li {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    ul li::marker {
+        font-size: 15px;
+
+    }
+
+    ol li {
+        margin-left: 1rem;
+        list-style-type: upper-alpha;
+        margin-bottom: 1rem;
+        padding-left: 0.25rem;
+
+
+
+    }
+
+    ol li::marker {
+        font-size: 18px;
+        font-family: Arial;
+    }
+
+    /* Counteract the specificity of the gross *:not() chain. */
+
+    h1 {
+        padding: 40px 0px 18px 57px !important;
+    }
+
+    /*  === End gross hack */
+
+    p {
+        color: #555;
+        height: auto;
+        line-height: 2;
+    }
+
+    pre,
+    code {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+    }
+
+    pre {
+        font-size: .8rem;
+        word-break: break-all;
+        padding: 1.125em;
+        white-space: break-spaces;
+        color: rgb(143, 0, 69);
+        margin-top: -75px !important;
+    }
+
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: #268f04;
+    }
+
+    .main {
+        max-width: 30rem;
+        margin: auto;
+    }
+
+    .decor {
+        background: linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);
+        height: 3rem;
+        width: 5rem;
+        position: absolute;
+        top: 38px;
+        /* left: 25px; */
+        text-indent: 0px;
+
+    }
+
+    #mySidenav a {
+        position: absolute;
+        right: -45px;
+        transition: 0.3s;
+        padding: 3px;
+        width: 50px;
+        text-indent: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+        border-radius: 5px 0 0 5px;
+    }
+
+    #mySidenav a:hover {
+        right: 0px;
+    }
+
+    #content {
+        top: 15px;
+        background-color: #268f04;
+    }
+
+    #share {
+        top: 60px;
+        background-color: #268f04;
+    }
+
+    button {
+        padding-bottom: 5px !important;
+        border-radius: 10px;
+        border: 2px solid #268f04;
+        float: right;
+        background: white;
+        font-weight: 700;
+        margin-right: 10px !important;
+        margin-top: 30px !important;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button a {
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+    }
+</style>
+
+<body>
+
+    <!-- <div id="mySidenav" class="sidenav">
+        <a href="../toc" id="content">目录</a>
+        <a href="../toc" id="share">分享</a> 
+    </div> -->
+    <div class="main">
+        <div class="decor">LP12</div>
+        <button><a href="/gh/whwu17/proses@gh-pages/lp/toc/">目录</a></button>
+        <h1 id="living-project生存企划">Living Project（生存企划）</h1>
+
+<p>终。</p>
+
+<hr style="padding: 0;
+    background-color: #999;
+    color: #999;
+    height: 1px;
+    border: 0;
+   " />
+
+<blockquote>
+  <p>[Ack] ticktick创作工具、tadu在线阅读平台</p>
+</blockquote>
+
+<blockquote>
+  <p>[说明] 故事均为虚构，无任何现实场景映射。同时，我还是母胎solo，因此故事中的情侣均为虚拟过程，无任何恋爱经历对应。</p>
+</blockquote>
+
+<blockquote>
+  <p>[曾用标题] 不可接触的：UNTOUCHABLE (in living project)</p>
+</blockquote>
+
+<h3 id="导语">导语：</h3>
+
+<p>塔读：这是个新的世界，它被生命搭载着，承受于这些难以用语言表达的情感一起。当所有的命题都找到了有效或无效的解答时，话题里的言语就会成为心之所向，混杂在迷雾之中。</p>
+
+<p>爱文者/菠萝包：当我们用心拥抱这个世界时，这个世界也会提醒我们需要相遇的美好。在他们打包成怀念时，就变得悲伤了起来。</p>
+
+<h3 id="宣发语">宣发语：</h3>
+
+<ul>
+  <li>如果不想活了，那不如去死一死吧。</li>
+  <li>用2022的经历，换来2023的相遇。</li>
+</ul>
+
+<h3 id="项目描述">项目描述：</h3>
+
+<p>𝑳𝒆𝒕’𝒔 𝒉𝒂𝒗𝒆 𝒂 𝒃𝒆𝒈𝒊𝒏𝒏𝒊𝒏𝒈 𝒘𝒊𝒕𝒉𝒐𝒖𝒕 𝒂 𝒉𝒐𝒓𝒓𝒊𝒃𝒍𝒆 𝒎𝒐𝒗𝒊𝒆 𝒆𝒏𝒅𝒊𝒏𝒈.</p>
+
+<p>以前的朋友圈里，人们总是喜欢记录生活。现在的朋友圈里，人们到处发表着精修过的图片，配上乐观开朗的文案，就好像这个世界充满着幸福一般。我总觉得，每个人的生活都不总是那么乐观的，一定会有一些不开心的时刻。那如果将它发泄出来会不会才是我们应该做的呢？</p>
+
+<h3 id="序">序：</h3>
+
+<p>我们在现实里做了一场梦，又在梦里感受到具体的真实。</p>
+
+<h3 id="活动文案">活动文案：</h3>
+
+<p>（暂无）愿你有个好梦～晚安💤</p>
+
+<h3 id="编辑时间线">编辑时间线：</h3>
+
+<h4 id="2021">【2021】</h4>
+
+<ul>
+  <li>1月1日：项目启动</li>
+  <li>7月31日：第1章初稿编辑</li>
+  <li>8月1日：第2章初稿编辑</li>
+  <li>8月2日：第3章整稿创作</li>
+  <li>8月7日：第4章初稿编辑</li>
+  <li>8月19日：第8章初稿编辑</li>
+  <li>8月30日：第5章初稿编辑</li>
+  <li>10月3日：第6章初稿编辑</li>
+  <li>11月22日：第7章初稿编辑</li>
+  <li>11月25日：第10、11章初稿编辑</li>
+  <li>12月8日：第9章初稿编辑</li>
+  <li>12月20日：第6章终稿修订</li>
+  <li>12月23日：第1章终稿修订</li>
+  <li>11月25日：第12章初稿编辑</li>
+  <li>12月13日：第5章终稿修订</li>
+</ul>
+
+<h4 id="2022">【2022】</h4>
+
+<ul>
+  <li>5月21日：第2、4章终稿修订</li>
+  <li>6月7日：第7章终稿修订</li>
+  <li>11月6日：第9章终稿修订</li>
+  <li>11月25日：第8章终稿修订</li>
+  <li>12月29日：第12章终稿修订</li>
+</ul>
+
+<h4 id="2023">【2023】</h4>
+
+<ul>
+  <li>1月8日：第12章版本终审</li>
+  <li>1月9日：第10、11章终稿修订</li>
+</ul>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    let el = document.getElementsByTagName('blockquote');
+    for (let e of el) {
+        let tt = e.getElementsByTagName('p')[0].innerHTML
+        tts = tt.split('\n')
+        tt = tt.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        if(tt.match(/\[.*\]/)!=null ){
+           tt=tt.replace('[','');
+           tt=tt.replace(']','：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+        }else{
+        tt = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tt
+    }
+        e.getElementsByTagName('p')[0].innerHTML = tt;
+    }
+    let h1ele = document.getElementsByTagName('h1')[0]
+    let news = document.createElement('div')
+    news.style = 'text-align: end;margin-right: 9px;font-size: small;'
+    news.innerHTML = '◻ 忆·墨'
+    h1ele.after(news)
+</script>

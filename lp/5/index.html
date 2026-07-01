@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5DS6WE929L');
+    </script>
+    <meta charset="UTF-8" />
+    <title>Living Project - 5</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <meta name="theme-color" content="#f8f8f8" />
+</head>
+<style>
+    @media print {
+
+        *,
+        *:before,
+        *:after {
+            background: transparent !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        a,
+        a:visited {
+            text-decoration: underline;
+        }
+
+        a[href]:after {
+            content: " (" attr(href) ")";
+        }
+
+        abbr[title]:after {
+            content: " (" attr(title) ")";
+        }
+
+        a[href^="#"]:after,
+        a[href^="javascript:"]:after {
+            content: "";
+        }
+
+
+        blockquote {
+            /* border: 1px solid #999; */
+            /* page-break-inside: avoid; */
+            margin: 0
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tr,
+        img {
+            page-break-inside: avoid;
+        }
+
+        img {
+            max-width: 100% !important;
+        }
+
+        p,
+        h2,
+        h3 {
+            orphans: 3;
+            widows: 3;
+        }
+
+        h2,
+        h3 {
+            page-break-after: avoid;
+        }
+    }
+
+    html {
+        font-size: 12px;
+        margin: 0 25px;
+    }
+
+    @media screen and (min-width: 32rem) and (max-width: 48rem) {
+        html {
+            font-size: 15px;
+            margin: 0 25px;
+        }
+    }
+
+    @media screen and (min-width: 48rem) {
+        html {
+            font-size: 16px;
+            margin: 0 25px;
+        }
+    }
+
+    body {
+        line-height: 1.85;
+    }
+
+    p,
+    .splendor-p {
+        font-size: 16px;
+        margin-top: 1.3rem;
+        text-indent: 28px;
+    }
+
+    h1,
+    .splendor-h1,
+    h2,
+    .splendor-h2,
+    h3,
+    .splendor-h3,
+    h4,
+    .splendor-h4 {
+        margin: 1.414rem 0 .5rem;
+        font-weight: inherit;
+        line-height: 1.42;
+    }
+
+    h1,
+    .splendor-h1 {
+        margin-top: 0;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    h2,
+    .splendor-h2 {
+        font-size: 1rem;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h3,
+    .splendor-h3 {
+        font-size: 0.9rem;
+        font-weight: 600;
+    } /* for LP12 only.  */
+
+    h4,
+    .splendor-h4 {
+        font-size: 0.9rem;
+    }
+
+    h5,
+    .splendor-h5 {
+        font-size: 1.2rem;
+    }
+
+    h6,
+    .splendor-h6 {
+        font-size: .88rem;
+    }
+
+    small,
+    .splendor-small {
+        font-size: .707em;
+    }
+
+    /* https://github.com/mrmrs/fluidity */
+
+    img,
+    canvas,
+    iframe,
+    video,
+    svg,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    html {
+        font-size: 18px;
+        max-width: 100%;
+    }
+
+    body {
+        color: #444;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        max-width: 100%;
+        background: #eeeeee;
+    }
+
+    ul p,
+    ol p {
+        text-indent: 0;
+    }
+
+    img {
+        margin-left: -30px;
+    }
+
+    /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
+
+    p,
+    *:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
+        margin: 1rem auto 1rem;
+        max-width: 30rem;
+        padding: .25rem;
+    }
+
+    div {
+        /* width: 100%; */
+
+    }
+
+    div img {
+        width: 100%;
+    }
+
+    blockquote {
+        margin: 50px auto 75px;
+    }
+
+    blockquote p {
+        background: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin: 26px auto 0;
+        max-width: 550px;
+        /* min-height: 300px; */
+        padding: 24px;
+        position: relative;
+        width: 80%;
+        text-indent: 0;
+        /* content: "aaa" */
+    }
+
+    blockquote p:before,
+    blockquote p:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+    blockquote p:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.7deg);
+        -webkit-transform: rotate(-2.7deg);
+        -moz-transform: rotate(-2.7deg);
+    }
+
+    blockquote p:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+        -webkit-transform: rotate(1.4deg);
+        -moz-transform: rotate(1.4deg);
+    }
+
+    ul li {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    ul li::marker {
+        font-size: 15px;
+
+    }
+
+    ol li {
+        margin-left: 1rem;
+        list-style-type: upper-alpha;
+        margin-bottom: 1rem;
+        padding-left: 0.25rem;
+
+
+
+    }
+
+    ol li::marker {
+        font-size: 18px;
+        font-family: Arial;
+    }
+
+    /* Counteract the specificity of the gross *:not() chain. */
+
+    h1 {
+        padding: 40px 0px 18px 57px !important;
+    }
+
+    /*  === End gross hack */
+
+    p {
+        color: #555;
+        height: auto;
+        line-height: 2;
+    }
+
+    pre,
+    code {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+    }
+
+    pre {
+        font-size: .8rem;
+        word-break: break-all;
+        padding: 1.125em;
+        white-space: break-spaces;
+        color: rgb(143, 0, 69);
+        margin-top: -75px !important;
+    }
+
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: #268f04;
+    }
+
+    .main {
+        max-width: 30rem;
+        margin: auto;
+    }
+
+    .decor {
+        background: linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);
+        height: 3rem;
+        width: 5rem;
+        position: absolute;
+        top: 38px;
+        /* left: 25px; */
+        text-indent: 0px;
+
+    }
+
+    #mySidenav a {
+        position: absolute;
+        right: -45px;
+        transition: 0.3s;
+        padding: 3px;
+        width: 50px;
+        text-indent: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+        border-radius: 5px 0 0 5px;
+    }
+
+    #mySidenav a:hover {
+        right: 0px;
+    }
+
+    #content {
+        top: 15px;
+        background-color: #268f04;
+    }
+
+    #share {
+        top: 60px;
+        background-color: #268f04;
+    }
+
+    button {
+        padding-bottom: 5px !important;
+        border-radius: 10px;
+        border: 2px solid #268f04;
+        float: right;
+        background: white;
+        font-weight: 700;
+        margin-right: 10px !important;
+        margin-top: 30px !important;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button a {
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+    }
+</style>
+
+<body>
+
+    <!-- <div id="mySidenav" class="sidenav">
+        <a href="../toc" id="content">目录</a>
+        <a href="../toc" id="share">分享</a> 
+    </div> -->
+    <div class="main">
+        <div class="decor">LP5</div>
+        <button><a href="/gh/whwu17/proses@gh-pages/lp/toc/">目录</a></button>
+        <h1 id="共享时间">共享时间</h1>
+
+<p>我们身处在这个世界里，有多久没有过属于自己的时间了呢？</p>
+
+<p>白天的我们忙碌于工作、人际和生活，即使这些时间的度过是无意义的，它们的的确确在侵蚀着我们的经过。我们被这些时间占据，却很少能有自己的时间，仅属于自己，不属于任何事情，不属于任何人，不属于任何琐碎，甚至不属于任何自身萌芽出的想法、态度和改变。</p>
+
+<p>只有在深夜不睡的日子里，这些仅属于我们的时间才会偷跑出来一阵子。我们总害怕错过这宝贵的和自己沟通的时间，熬夜就成为了沟通两者的桥梁。如果其余的时间注定要被共享，那么就让仅属于自己的时间在它会来的时间里任意通行，不受阻碍。</p>
+
+<p>在这段时间中，情绪占据了主要部分。我们被感性牵制，完全卸下了理性的束缚。生命、死亡、性爱，这些平时不愿提及的话题在夜晚里都会进入我们的脑海里，胡思乱想一阵后又跑了出去，给我们带来了或喜悦或痛苦的经过，也可能是无解的困惑吗？</p>
+
+<p>如果时间可以停在某一个时刻就好了，不用去想着时间是会流逝的，我们应当终止一些无谓的思考。不会有睡意，来打断我们刚刚开始就已有些疲惫的思考。</p>
+
+<p>这些无谓的思考，看上去也不那么的“无谓”呢！</p>
+
+<p>当我们逐渐沉入这一思考时，时间有时会是像停止了一般。尽管它依然流逝，可我们却感受不到下一个时间应该有的感受了，例如应有的困意和疲倦。像是滞后了一般，时间在流动，身体却停滞。</p>
+
+<p>人们愿意用很多方式解决失眠的问题，它太影响第二天的效率了，那些需要被共享的时间是那么的重要，以至于我们尽管不愿意停下这自私的时间，但还是要暂停，以确保和他人共享时间时的理性。此时的理性和感性似乎在某一种程度上达成了一致，即睡觉；又有一些差异，即失眠。</p>
+
+<p>自私是不符合社会价值的。我们拼命压缩自私的时间，将时间尽量多的共享给外人，让他们来接纳自己，融于社会之中，是我们依赖着外界的生存方式。</p>
+
+<p>如果我们是一个自私的人，将所有时间留给自己，会有怎样的变化呢？</p>
+
+<p>在这些被共享的时间里，不满足于此的观点促使我们努力的扩展这一想象，拼命被挤压。事件经由时间填满，再赋值于时间。坏情绪的负效应在这一模式中显得尤为突出。这种被所有事件压在身上，却不满足于这些事件的情感令人感到窒息，自陷于这种情绪中，很快的就会来到崩溃的边缘。</p>
+
+<p>好在，理性告诉我们需要克制自己的情绪。在被事件一次次冲击后的玻璃碎片划破身体的同时，我们还能够在这种情况中保持冷静绝不是容易的事情。大量的麻痹情绪需要充斥着我们的头脑，才能得到些许的释放。有很多地方才基于这一需求而建立。</p>
+
+<p>牵制于时间、事件、情绪、释放、再牵制…如此的循环一次次的经过于生活，组成了生命的构成。好在，逃离这一循环的方式有很多；坏在，没人产生过逃离的想法，或者说，逃离的人在作出这一决定时就被驳回了。</p>
+
+<p>因为自己的目标、因为财产的积累、因为人们的偏见、因为很多不可控制的因素、因为没被意识到的缘由…</p>
+
+<p>推翻代表着放弃现状并拥抱未知。未知不代表美好，甚至未知的事物通常基于现状，所以在放弃后通常不会好于现状。如果接受是合理的，那么放弃则是困难的。人们都喜欢接受的增量反馈，不喜欢放弃的减量反馈。</p>
+
+<p>但如果放弃换到了更好的，不论是哪种意义上的，只要是在自我评价中认为是好的，那么这时就会强调自身放弃的意义，这一决定的英明和正确性足以掩盖其运气成分，或者说，足以不明所以的给吃瓜群众塑造一个“伟人”形象。</p>
+
+<p>所以，放弃是个随机性很强的事件。对未知的恐惧，是每个人在面对放弃时需要面对的话题，亦是逃避放弃、拥抱接受的原因之一。</p>
+
+<p>解决这一问题还没有很好的方法，有人把这些事情归功于天意，归功于人生的起起伏伏，总之降低这种代价的方法似乎是个难题，还没找到一种合理的解决方案。</p>
+
+<p>那么，索性将一切全部释放给时间好了。既然我们始于时间，就让时间帮我们决定，是共享时间还是自我时间，是接受还是放弃，是变得更好还是更坏，是起伏不定还是终有定性。</p>
+
+<blockquote>
+  <p>Everything can be fine, wherefore what we can do is to forget about the thinking itself, as a consciousness of the unknown unknown, or what is not known to be unknown. (Revised from Luciana Parisi)</p>
+</blockquote>
+
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    let el = document.getElementsByTagName('blockquote');
+    for (let e of el) {
+        let tt = e.getElementsByTagName('p')[0].innerHTML
+        tts = tt.split('\n')
+        tt = tt.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        if(tt.match(/\[.*\]/)!=null ){
+           tt=tt.replace('[','');
+           tt=tt.replace(']','：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+        }else{
+        tt = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tt
+    }
+        e.getElementsByTagName('p')[0].innerHTML = tt;
+    }
+    let h1ele = document.getElementsByTagName('h1')[0]
+    let news = document.createElement('div')
+    news.style = 'text-align: end;margin-right: 9px;font-size: small;'
+    news.innerHTML = '◻ 忆·墨'
+    h1ele.after(news)
+</script>
