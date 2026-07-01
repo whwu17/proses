@@ -1,0 +1,4 @@
+# Overrides for the jsDelivr CDN mirror build (see .github/workflows/mirror.yml).
+url: 'https://cdn.jsdelivr.net'
+baseurl: '/gh/whwu17/proses@gh-pages'
+prefix: '/gh/whwu17/proses@gh-pages'
