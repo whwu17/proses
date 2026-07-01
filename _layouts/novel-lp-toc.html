@@ -9,97 +9,108 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#f8f8f8" />
     <style>
-    html {
-        color-scheme: light;
-        font-size: 18px;
-        margin: 0 25px;
-        max-width: 100%;
-    }
+html {
+    color-scheme: light;
+    font-size: 18px;
+    margin: 0 25px;
+    max-width: 100%;
+}
 
-    body {
-        color: #444;
-        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        max-width: 100%;
-        background: #eeeeee;
-        line-height: 1.85;
-    }
+body {
+    background: #eeeeee;
+    color: #141414;
+    font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
 
-    .main {
-        max-width: 30rem;
-        margin: auto;
-        position: relative;
-    }
+.main {
+    max-width: 30rem;
+    margin: auto;
+}
 
-    .decor {
-        height: 3rem;
-        width: 6rem;
-        position: absolute;
-        top: 38px;
-        text-indent: 6px;
-        font-weight: bold;
-        color: #141414;
-    }
+.widget {
+    position: relative;
+}
 
-    h1.toc-title {
-        margin-top: 0;
-        padding: 40px 0 18px 57px;
-        font-size: 17px;
-        font-weight: normal;
-        line-height: 1.42;
-        color: #141414;
-    }
+h2 {
+    height: 50px;
+    margin-top: 43px;
+    margin-left: 65px;
+    font-size: 17px;
+    font-weight: normal;
+    color: #141414;
+}
 
-    ul.toc-list {
-        margin: 0;
-        padding: 0 0 15px 0;
-        list-style: none;
-    }
+.decor {
+    height: 3rem;
+    width: 6rem;
+    position: absolute;
+    top: 38px;
+    text-indent: 6px;
+    font-weight: bold;
+    color: #141414;
+}
 
-    ul.toc-list li {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 15px;
-        line-height: 25px;
-        padding: 8px 14px;
-        background: #eee;
-        margin-bottom: 12px;
-        border-radius: 11px;
-        border: 1px solid darkgray;
-    }
+body, ul, li, a {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    color: #141414;
+}
 
-    ul.toc-list li a {
-        display: block;
-        text-decoration: none;
-        color: #141414;
-    }
+.fix_toc {
+    padding: 15px;
+}
 
-    a:hover,
-    a:focus,
-    a:active {
-        color: #268f04;
-    }
+.fix_toc .widget ul li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 25px;
+    padding: 8px 14px;
+    background: #eee;
+    margin-bottom: 12px;
+    border-radius: 11px;
+    border: 1px solid darkgray;
+}
+
+.fix_toc .widget ul li a {
+    display: block;
+}
+
+.fix_toc .widget ul li.item-h3 {
+    margin-left: 10px;
+}
+
+.fix_toc .widget ul li.item-h4 {
+    margin-left: 20px;
+}
     </style>
 </head>
 
-<body bgcolor="#eeeeee" text="#444444">
+<body bgcolor="#eeeeee" text="#141414">
 
     <div class="main">
-        <div class="decor" style="background:linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
-        <h1 class="toc-title">Living Project / 不可接触的</h1>
-        <ul class="toc-list">
-            {% for collection in site.collections %}
-            {% if collection.label == "novels" %}
-                {% assign docs = collection.docs | sort: 'index'  %}
-                {% for post in docs %}
-                {% if post.index and post.url contains 'lp' %}
-            <li>
-                <a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
-            </li>
-                {% endif %}
+        <div id="fix_toc" class="fix_toc">
+            <div class="widget widget_toc">
+                <div class="decor" style="background:linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+                <h2>Living Project / 不可接触的</h2>
+                {% for collection in site.collections %}
+                {% if collection.label == "novels" %}
+                <ul>
+                    {% assign docs = collection.docs | sort: 'index'  %}
+                    {% for post in docs %}
+                    {% if post.index and post.url contains 'lp' %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                    </li>
+                    {%endif%}
+                    {% endfor %}
+                </ul>
+                {%endif%}
                 {% endfor %}
-            {% endif %}
-            {% endfor %}
-        </ul>
+            </div>
+        </div>
     </div>
 
 </body>
