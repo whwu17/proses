@@ -130,7 +130,7 @@
                     {% for post in docs %}
                     {% if post.index and post.url contains 'dp' %}
                     <li>
-                        <a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                        <a href="../{{ post.index }}/">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
                     </li>
                     {%endif%}
                     {% endfor %}

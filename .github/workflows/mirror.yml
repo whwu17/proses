@@ -1,8 +1,8 @@
-name: Deploy jsDelivr mirror
+name: Deploy static mirror
 
-# Publishes a static build to the gh-pages branch so the site is also
-# reachable via jsDelivr CDN. This helps when github.io fails with
-# ERR_SSL_PROTOCOL_ERROR or is otherwise unreachable (e.g. mainland China).
+# Builds a root-hosted static copy of the site for users who cannot reach
+# github.io (ERR_SSL_PROTOCOL_ERROR). Publishes to gh-pages, optional Surge /
+# Cloudflare Pages deploys, and an offline zip release.
 on:
   push:
     branches: ["main"]
@@ -28,16 +28,53 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Build for jsDelivr
-        # jsDelivr serves files at /gh/<user>/<repo>@<branch>/<path>
-        # so Jekyll links must include that prefix to resolve on cdn.jsdelivr.net.
+      - name: Build mirror site
         run: bundle exec jekyll build --config _config.yml,_config_mirror.yml
         env:
           JEKYLL_ENV: production
+
+      - name: Package offline zip
+        run: cd _site && zip -r ../proses-site.zip .
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
-          commit_message: "Deploy jsDelivr mirror"
+          commit_message: "Deploy static mirror"
+
+      - name: Publish offline zip
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mirror-latest
+          name: Offline mirror (open lp/toc/index.html locally)
+          files: proses-site.zip
+          make_latest: true
+          generate_release_notes: false
+          body: |
+            Download `proses-site.zip`, extract it, and open `lp/toc/index.html` in your browser.
+
+            This works without GitHub Pages when github.io is blocked or shows ERR_SSL_PROTOCOL_ERROR.
+
+      - name: Deploy to Surge
+        continue-on-error: true
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          if [ -z "$SURGE_TOKEN" ]; then
+            echo "SURGE_TOKEN not configured; skip Surge deploy"
+            exit 0
+          fi
+          npx surge@0.23.1 ./_site proses-lp.surge.sh --token "$SURGE_TOKEN"
+
+      - name: Deploy to Cloudflare Pages
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Cloudflare secrets not configured; skip Pages deploy"
+            exit 0
+          fi
+          npx wrangler@3 pages deploy _site --project-name=proses-lp
