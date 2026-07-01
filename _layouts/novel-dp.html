@@ -359,14 +359,16 @@
         font-weight: bold;
     }
 
-    h2.toc-title {
-        height: 50px;
-        margin-top: 43px;
-        margin-left: 65px;
-        margin-bottom: 0;
-        padding: 0;
-        font-size: 17px;
-        font-weight: normal;
+    .toc-header {
+        position: relative;
+        min-height: 96px;
+    }
+
+    h1.toc-title {
+        margin: 0;
+        padding: 40px 0 18px 57px !important;
+        font-size: 17px !important;
+        font-weight: normal !important;
         text-align: left;
         line-height: 1.42;
         color: #141414;
@@ -374,8 +376,9 @@
 
     ul.toc-list {
         margin: 0;
-        padding: 15px 0 0 0;
+        padding: 0;
         list-style: none;
+        clear: both;
     }
 
     ul.toc-list li {
@@ -407,8 +410,10 @@
     </div> -->
     <div class="main">
         {% if page.is_toc %}
-        <div class="decor toc-decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
-        <h2 class="toc-title">Dreaming Project / 可以接触的</h2>
+        <div class="toc-header">
+            <div class="decor toc-decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+            <h1 class="toc-title">Dreaming Project / 可以接触的</h1>
+        </div>
         <ul class="toc-list">
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
