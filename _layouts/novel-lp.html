@@ -3,15 +3,21 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5DS6WE929L');
+    </script>
     <title>Living Project - {{page.index }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
     <meta name="theme-color" content="#f8f8f8" />
     <style>
-    html {
-        color-scheme: light;
-    }
-
     @media print {
 
         *,
@@ -176,20 +182,26 @@
 
     body {
         color: #444;
-        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         max-width: 100%;
         background: #eeeeee;
-        -webkit-text-fill-color: #444;
     }
 
-    .main p,
-    .main h1,
-    .main h2,
-    .main h3,
-    .main h4,
-    .main blockquote {
-        margin: 1rem auto;
+    ul p,
+    ol p {
+        text-indent: 0;
+    }
+
+    img {
+        margin-left: -30px;
+    }
+
+    /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
+
+    p,
+    *:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
+        margin: 1rem auto 1rem;
         max-width: 30rem;
         padding: .25rem;
     }
@@ -209,21 +221,46 @@
 
     blockquote p {
         background: #ffffff;
-        border: 1px solid #cccccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         margin: 26px auto 0;
         max-width: 550px;
+        /* min-height: 300px; */
         padding: 24px;
+        position: relative;
+        width: 80%;
         text-indent: 0;
+        /* content: "aaa" */
     }
 
-    ul p,
-    ol p {
-        text-indent: 0;
+    blockquote p:before,
+    blockquote p:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
     }
 
-    img {
-        margin-left: -30px;
-        max-width: 100%;
+    blockquote p:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.7deg);
+        -webkit-transform: rotate(-2.7deg);
+        -moz-transform: rotate(-2.7deg);
+    }
+
+    blockquote p:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+        -webkit-transform: rotate(1.4deg);
+        -moz-transform: rotate(1.4deg);
     }
 
     ul li {
@@ -358,35 +395,29 @@
     </div> -->
     <div class="main">
         <div class="decor">LP{{page.index }}</div>
-        <button><a href="../toc/">目录</a></button>
+        <button><a href="{{ '/lp/toc/' | relative_url }}">目录</a></button>
         {{content}}
     </div>
 
     <script>
-    (function () {
-        var blockquotes = document.getElementsByTagName('blockquote');
-        for (var i = 0; i < blockquotes.length; i++) {
-            var paragraph = blockquotes[i].getElementsByTagName('p')[0];
-            if (!paragraph) continue;
-            var text = paragraph.innerHTML;
-            text = text.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-            if (text.match(/\[.*\]/)) {
-                text = text.replace('[', '');
-                text = text.replace(']', '：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-            } else {
-                text = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + text;
-            }
-            paragraph.innerHTML = text;
-        }
-
-        var heading = document.getElementsByTagName('h1')[0];
-        if (heading) {
-            var byline = document.createElement('div');
-            byline.style.cssText = 'text-align: end;margin-right: 9px;font-size: small;';
-            byline.innerHTML = '◻ 忆·墨';
-            heading.insertAdjacentElement('afterend', byline);
-        }
-    })();
+    let el = document.getElementsByTagName('blockquote');
+    for (let e of el) {
+        let tt = e.getElementsByTagName('p')[0].innerHTML
+        tts = tt.split('\n')
+        tt = tt.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        if(tt.match(/\[.*\]/)!=null ){
+           tt=tt.replace('[','');
+           tt=tt.replace(']','：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+        }else{
+        tt = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tt
+    }
+        e.getElementsByTagName('p')[0].innerHTML = tt;
+    }
+    let h1ele = document.getElementsByTagName('h1')[0]
+    let news = document.createElement('div')
+    news.style = 'text-align: end;margin-right: 9px;font-size: small;'
+    news.innerHTML = '◻ 忆·墨'
+    h1ele.after(news)
     </script>
 </body>
 
