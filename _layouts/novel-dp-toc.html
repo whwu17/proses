@@ -9,46 +9,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#f8f8f8" />
     <style>
-    html { color-scheme: light; }
+html { color-scheme: light; }
 
-    body {
-        background: #eeeeee;
-        color: #141414;
-        -webkit-text-fill-color: #141414;
-    }
-
+body{
+background: #eeeeee;
+}
     .main {
         max-width: 30rem;
         margin: auto;
     }
-
     h2 {
         height: 50px;
-        margin-top: 43px;
-        margin-left: 65px;
-        font-size: 17px;
-        font-weight: normal;
+    margin-top: 43px;
+    margin-left: 65px;
+    font-size: 17px;
+    font-weight: normal;
     }
-
     .decor {
         height: 3rem;
         width: 6rem;
         position: absolute;
         top: 38px;
+        /* left: 25px; */
         text-indent: 6px;
         font-weight: bold;
     }
 
-    body, body div, body h2, body li, body ul, body a, body button {
+    * {
         padding: 0;
         margin: 0;
         text-decoration: none;
         list-style: none;
         font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       
+
         color: #141414;
-        -webkit-text-fill-color: #141414;
     }
 
+    
     h2.widgettitle {
         margin-bottom: 10px;
         font-size: 20px;
@@ -66,6 +64,7 @@
         cursor: pointer;
     }
 
+
     .fix_toc {
         padding: 15px;
     }
@@ -73,12 +72,12 @@
     .fix_toc .widget ul li {
         font-family: 'IBM Plex Sans', sans-serif;
         font-size: 15px;
-        line-height: 25px;
-        padding: 8px 14px;
-        background: #eee;
-        margin-bottom: 12px;
-        border-radius: 11px;
-        border: 1px solid darkgray;
+    line-height: 25px;
+    padding: 8px 14px;
+    background: #eee;
+    margin-bottom: 12px;
+    border-radius: 11px;
+    border: 1px solid darkgray;
     }
 
     .fix_toc .widget ul li a {
@@ -103,14 +102,13 @@
         width: 5px;
         background-color: #ffffff;
     }
-
-    button {
+    button{
         padding: 5px 10px;
-        border-radius: 10px;
-        border: 2px solid #268f04;
-        float: right;
-        background: white;
-        font-weight: 700;
+    border-radius: 10px;
+    border: 2px solid #268f04;
+    float: right;
+    background: white;
+    font-weight: 700;
     }
     </style>
 </head>
@@ -121,6 +119,7 @@
         <div id="fix_toc" class="fix_toc">
             <div class="widget widget_toc">
                 <div class="decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+                <!-- <button><a href="#" id="share">分享</a></button> -->
                 <h2>Dreaming Project / 可以接触的</h2>
                 
                 {% for collection in site.collections %}
