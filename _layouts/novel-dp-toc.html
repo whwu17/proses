@@ -1,26 +1,107 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f8f8f8">
     <title>Living Project - Content</title>
+    <style>
+    html {
+        color-scheme: light;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: #eeeeee;
+        color: #141414;
+        font-family: 'Comic Sans MS', cursive, 'Segoe UI', Tahoma, Geneva, sans-serif;
+        -webkit-text-fill-color: #141414;
+    }
+
+    .main {
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+
+    .widget {
+        position: relative;
+        padding: 15px;
+    }
+
+    .decor {
+        background: linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);
+        height: 3rem;
+        width: 6rem;
+        position: absolute;
+        top: 38px;
+        left: 0;
+        text-indent: 6px;
+        font-weight: bold;
+        color: #141414;
+        -webkit-text-fill-color: #141414;
+    }
+
+    h2 {
+        height: 50px;
+        margin: 43px 0 10px 65px;
+        padding: 0;
+        font-size: 17px;
+        font-weight: normal;
+        color: #141414;
+        -webkit-text-fill-color: #141414;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 12px;
+    }
+
+    li a {
+        display: block;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        line-height: 25px;
+        padding: 8px 14px;
+        background: #eeeeee;
+        border-radius: 11px;
+        border: 1px solid darkgray;
+        color: #141414;
+        text-decoration: none;
+        -webkit-text-fill-color: #141414;
+    }
+    </style>
 </head>
-<body bgcolor="#eeeeee" text="#000000" style="margin:0;padding:16px;background-color:#eeeeee;color:#000000;font-family:system-ui,-apple-system,sans-serif;-webkit-text-fill-color:#000000;">
-    <h1 style="margin:0 0 16px 0;font-size:18px;font-weight:normal;color:#000000;-webkit-text-fill-color:#000000;">Dreaming Project / 可以接触的</h1>
-    <ul style="margin:0;padding:0;list-style:none;">
+
+<body bgcolor="#eeeeee" text="#141414">
+    <div class="main">
+        <div class="widget widget_toc">
+            <div class="decor">目录</div>
+            <h2>Dreaming Project / 可以接触的</h2>
+
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
+            <ul>
                 {% assign docs = collection.docs | sort: 'index'  %}
                 {% for post in docs %}
                 {% if post.index and post.url contains 'dp' %}
-        <li style="margin:0 0 12px 0;">
-            <a href="../{{ post.index }}/" style="display:block;padding:10px 14px;background-color:#ffffff;color:#000000;border:1px solid #999999;border-radius:8px;text-decoration:none;font-size:16px;line-height:1.4;-webkit-text-fill-color:#000000;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
-        </li>
+                <li>
+                    <a href="../{{ post.index }}/">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                </li>
                 {% endif %}
                 {% endfor %}
+            </ul>
             {% endif %}
             {% endfor %}
-    </ul>
+        </div>
+    </div>
 </body>
+
 </html>
