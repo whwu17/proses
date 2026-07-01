@@ -1,3 +1,38 @@
+{% if page.is_toc %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Living Project - Content</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f8f8f8" />
+</head>
+<body bgcolor="#eeeeee" text="#141414" style="margin:0;background-color:#eeeeee;color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
+    <div style="max-width:30rem;margin:0 auto;">
+        <div style="padding:15px;position:relative;">
+            <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;text-indent:6px;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+            <h2 style="height:50px;margin:43px 0 12px 65px;padding:0;font-size:17px;font-weight:normal;line-height:50px;text-align:left;color:#141414;background-color:#eeeeee;-webkit-text-fill-color:#141414;">Dreaming Project / 可以接触的</h2>
+            <ul style="margin:0;padding:0;list-style:none;">
+            {% for collection in site.collections %}
+            {% if collection.label == "novels" %}
+                {% assign docs = collection.docs | sort: 'index'  %}
+                {% for post in docs %}
+                {% if post.index and post.url contains 'dp' %}
+                <li style="margin:0 0 12px 0;list-style:none;">
+                    <a href="{{ post.url | relative_url }}" style="display:block;font-family:'IBM Plex Sans','Segoe UI',sans-serif;font-size:15px;line-height:25px;padding:8px 14px;background-color:#eeeeee;color:#141414;border:1px solid darkgray;border-radius:11px;text-decoration:none;-webkit-text-fill-color:#141414;">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+{% else %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -5,7 +40,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>Living Project - {% if page.is_toc %}Content{% else %}{{ page.index }}{% endif %}</title>
+    <title>Living Project - {{ page.index }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- <link rel="manifest" href="/manifest.json"> -->
@@ -353,59 +388,6 @@
         font-size: 15px;
     }
 
-    .fix_toc {
-        padding: 15px;
-    }
-
-    .widget-toc {
-        position: relative;
-    }
-
-    .decor.toc-decor {
-        width: 6rem;
-        text-indent: 6px;
-        font-weight: bold;
-        z-index: 0;
-    }
-
-    h2.toc-title {
-        height: 50px;
-        margin: 43px 0 12px 65px;
-        padding: 0;
-        font-size: 17px;
-        font-weight: normal !important;
-        text-align: left !important;
-        line-height: 50px;
-        color: #141414;
-        background: #eeeeee;
-        position: relative;
-        z-index: 1;
-    }
-
-    ul.toc-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    ul.toc-list li {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 15px;
-        line-height: 25px;
-        padding: 8px 14px;
-        background: #eee;
-        margin: 0 0 12px 0;
-        margin-left: 0;
-        border-radius: 11px;
-        border: 1px solid darkgray;
-        list-style: none;
-    }
-
-    ul.toc-list li a {
-        display: block;
-        text-decoration: none;
-        color: #141414;
-    }
     </style>
 </head>
 
@@ -416,33 +398,11 @@
         <a href="/novels/toc" id="share">分享</a> 
     </div> -->
     <div class="main">
-        {% if page.is_toc %}
-        <div class="fix_toc">
-            <div class="widget-toc">
-                <div class="decor toc-decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
-                <h2 class="toc-title">Dreaming Project / 可以接触的</h2>
-                <ul class="toc-list">
-            {% for collection in site.collections %}
-            {% if collection.label == "novels" %}
-                {% assign docs = collection.docs | sort: 'index'  %}
-                {% for post in docs %}
-                {% if post.index and post.url contains 'dp' %}
-            <li><a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a></li>
-                {% endif %}
-                {% endfor %}
-            {% endif %}
-            {% endfor %}
-        </ul>
-            </div>
-        </div>
-        {% else %}
         <div class="decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">DP{{page.index }}</div>
         <button><a href="{{ '/dp/toc/' | relative_url }}">目录</a></button>
         {{content}}
-        {% endif %}
     </div>
 
-    {% unless page.is_toc %}
     <script>
     let el = document.getElementsByTagName('blockquote');
     for (let e of el) {
@@ -458,7 +418,7 @@
     news.innerHTML='◻ 忆·墨'
     h1ele.after(news)
     </script>
-    {% endunless %}
 </body>
 
 </html>
+{% endif %}
