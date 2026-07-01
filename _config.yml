@@ -1,7 +1,10 @@
 
 # -----
 # Build
-prefix: '/proses' 
+url: 'https://whwu17.github.io'
+baseurl: '/proses'
+# Kept for older layouts that still reference site.prefix.
+prefix: '/proses'
 Timezone: Etc/UTC
 
 collections:
@@ -17,11 +20,13 @@ defaults:
       type: novels
     values:
       layout: novel-lp
+      shortname: LP
   - scope:
       path: "_novels/dp"
       type: novels
     values:
       layout: novel-dp
+      shortname: DP
 
 
 
