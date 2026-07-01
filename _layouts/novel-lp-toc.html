@@ -2,20 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5DS6WE929L');
-    </script>
     <meta charset="UTF-8" />
-    <title>Living Project - Content</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <title>Living Project - Content</title>
     <meta name="theme-color" content="#f8f8f8" />
 </head>
 <style>
@@ -156,20 +145,19 @@ background: #eeeeee;
 
     </div>
 
+    <script>
+    (function () {
+        var blockquotes = document.getElementsByTagName('blockquote');
+        for (var i = 0; i < blockquotes.length; i++) {
+            var paragraph = blockquotes[i].getElementsByTagName('p')[0];
+            if (!paragraph) continue;
+            var text = paragraph.innerHTML;
+            text = text.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+            text = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + text;
+            paragraph.innerHTML = text;
+        }
+    })();
+    </script>
 </body>
 
 </html>
-<script>
-    let el = document.getElementsByTagName('blockquote');
-    for (let e of el) {
-        let tt = e.getElementsByTagName('p')[0].innerHTML
-        tts = tt.split('\n')
-        tt = tt.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
-        tt = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tt
-        e.getElementsByTagName('p')[0].innerHTML = tt;
-        // let ce=document.createElement('p')
-        // ce.innerText="作者的话："
-        // e.appendChild(ce)
-
-    }
-</script>

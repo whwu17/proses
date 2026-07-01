@@ -2,20 +2,9 @@
 <html lang="zh-CN">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5DS6WE929L');
-    </script>
     <meta charset="UTF-8" />
-    <title>Living Project - {{page.index }}</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <title>Living Project - {{page.index }}</title>
     <meta name="theme-color" content="#f8f8f8" />
 </head>
 <style>
@@ -399,26 +388,32 @@
         {{content}}
     </div>
 
+    <script>
+    (function () {
+        var blockquotes = document.getElementsByTagName('blockquote');
+        for (var i = 0; i < blockquotes.length; i++) {
+            var paragraph = blockquotes[i].getElementsByTagName('p')[0];
+            if (!paragraph) continue;
+            var text = paragraph.innerHTML;
+            text = text.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+            if (text.match(/\[.*\]/)) {
+                text = text.replace('[', '');
+                text = text.replace(']', '：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+            } else {
+                text = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + text;
+            }
+            paragraph.innerHTML = text;
+        }
+
+        var heading = document.getElementsByTagName('h1')[0];
+        if (heading) {
+            var byline = document.createElement('div');
+            byline.style.cssText = 'text-align: end;margin-right: 9px;font-size: small;';
+            byline.innerHTML = '◻ 忆·墨';
+            heading.insertAdjacentElement('afterend', byline);
+        }
+    })();
+    </script>
 </body>
 
 </html>
-<script>
-    let el = document.getElementsByTagName('blockquote');
-    for (let e of el) {
-        let tt = e.getElementsByTagName('p')[0].innerHTML
-        tts = tt.split('\n')
-        tt = tt.replace(/\n/g, '<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
-        if(tt.match(/\[.*\]/)!=null ){
-           tt=tt.replace('[','');
-           tt=tt.replace(']','：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-        }else{
-        tt = "作者的话：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tt
-    }
-        e.getElementsByTagName('p')[0].innerHTML = tt;
-    }
-    let h1ele = document.getElementsByTagName('h1')[0]
-    let news = document.createElement('div')
-    news.style = 'text-align: end;margin-right: 9px;font-size: small;'
-    news.innerHTML = '◻ 忆·墨'
-    h1ele.after(news)
-</script>
