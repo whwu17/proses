@@ -353,32 +353,39 @@
         font-size: 15px;
     }
 
+    .fix_toc {
+        padding: 15px;
+    }
+
+    .widget-toc {
+        position: relative;
+    }
+
     .decor.toc-decor {
         width: 6rem;
         text-indent: 6px;
         font-weight: bold;
+        z-index: 0;
     }
 
-    .toc-header {
-        position: relative;
-        min-height: 96px;
-    }
-
-    h1.toc-title {
-        margin: 0;
-        padding: 40px 0 18px 57px !important;
-        font-size: 17px !important;
+    h2.toc-title {
+        height: 50px;
+        margin: 43px 0 12px 65px;
+        padding: 0;
+        font-size: 17px;
         font-weight: normal !important;
-        text-align: left;
-        line-height: 1.42;
+        text-align: left !important;
+        line-height: 50px;
         color: #141414;
+        background: #eeeeee;
+        position: relative;
+        z-index: 1;
     }
 
     ul.toc-list {
         margin: 0;
         padding: 0;
         list-style: none;
-        clear: both;
     }
 
     ul.toc-list li {
@@ -410,11 +417,11 @@
     </div> -->
     <div class="main">
         {% if page.is_toc %}
-        <div class="toc-header">
-            <div class="decor toc-decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
-            <h1 class="toc-title">Dreaming Project / 可以接触的</h1>
-        </div>
-        <ul class="toc-list">
+        <div class="fix_toc">
+            <div class="widget-toc">
+                <div class="decor toc-decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+                <h2 class="toc-title">Dreaming Project / 可以接触的</h2>
+                <ul class="toc-list">
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
                 {% assign docs = collection.docs | sort: 'index'  %}
@@ -426,6 +433,8 @@
             {% endif %}
             {% endfor %}
         </ul>
+            </div>
+        </div>
         {% else %}
         <div class="decor" style="background:linear-gradient(-55deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">DP{{page.index }}</div>
         <button><a href="{{ '/dp/toc/' | relative_url }}">目录</a></button>
