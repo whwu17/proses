@@ -35,6 +35,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Switch the repo's Pages build type to "GitHub Actions" automatically
+          # (migrates it off the deprecated legacy "deploy from a branch" pipeline).
+          enablement: true
 
       - name: Build with Jekyll
         # `configure-pages` provides the correct base path for the project site
