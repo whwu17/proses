@@ -1,0 +1,43 @@
+name: Deploy jsDelivr mirror
+
+# Publishes a static build to the gh-pages branch so the site is also
+# reachable via jsDelivr CDN. This helps when github.io fails with
+# ERR_SSL_PROTOCOL_ERROR or is otherwise unreachable (e.g. mainland China).
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "mirror"
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build for jsDelivr
+        # jsDelivr serves files at /gh/<user>/<repo>@<branch>/<path>
+        # so Jekyll links must include that prefix to resolve on cdn.jsdelivr.net.
+        run: bundle exec jekyll build --baseurl "/gh/whwu17/proses@gh-pages" --url "https://cdn.jsdelivr.net"
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          commit_message: "Deploy jsDelivr mirror"
