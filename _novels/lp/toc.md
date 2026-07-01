@@ -1,5 +1,5 @@
 ---
-layout: novel-lp-toc
-content: 1
+layout: novel-lp
+is_toc: true
 shortname: LP
 ---

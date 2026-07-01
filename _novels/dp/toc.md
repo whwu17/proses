@@ -1,5 +1,5 @@
 ---
-layout: novel-dp-toc
-content: 1
+layout: novel-dp
+is_toc: true
 shortname: DP
 ---

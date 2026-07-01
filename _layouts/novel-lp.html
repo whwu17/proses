@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>Living Project - {{page.index }}</title>
+    <title>Living Project - {% if page.is_toc %}Content{% else %}{{ page.index }}{% endif %}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- <link rel="manifest" href="/manifest.json"> -->
@@ -321,6 +321,7 @@
     .main {
         max-width: 30rem;
         margin: auto;
+        position: relative;
     }
 
     .decor {
@@ -378,6 +379,50 @@
         font-weight: 600;
         font-size: 15px;
     }
+
+    .decor.toc-decor {
+        width: 6rem;
+        text-indent: 6px;
+        font-weight: bold;
+    }
+
+    h2.toc-title {
+        height: 50px;
+        margin-top: 43px;
+        margin-left: 65px;
+        margin-bottom: 0;
+        padding: 0;
+        font-size: 17px;
+        font-weight: normal;
+        text-align: left;
+        line-height: 1.42;
+        color: #141414;
+    }
+
+    ul.toc-list {
+        margin: 0;
+        padding: 15px 0 0 0;
+        list-style: none;
+    }
+
+    ul.toc-list li {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 15px;
+        line-height: 25px;
+        padding: 8px 14px;
+        background: #eee;
+        margin: 0 0 12px 0;
+        margin-left: 0;
+        border-radius: 11px;
+        border: 1px solid darkgray;
+        list-style: none;
+    }
+
+    ul.toc-list li a {
+        display: block;
+        text-decoration: none;
+        color: #141414;
+    }
     </style>
 </head>
 
@@ -388,11 +433,29 @@
         <a href="../toc" id="share">分享</a> 
     </div> -->
     <div class="main">
+        {% if page.is_toc %}
+        <div class="decor toc-decor" style="background:linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">目录</div>
+        <h2 class="toc-title">Living Project / 不可接触的</h2>
+        <ul class="toc-list">
+            {% for collection in site.collections %}
+            {% if collection.label == "novels" %}
+                {% assign docs = collection.docs | sort: 'index'  %}
+                {% for post in docs %}
+                {% if post.index and post.url contains 'lp' %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.shortname }}{{ post.index }}. {{ post.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
         <div class="decor" style="background:linear-gradient(-63deg, transparent 49%, #268f04 49.5%, #268f04 50.5%, transparent 51%);">LP{{page.index }}</div>
         <button><a href="{{ '/lp/toc/' | relative_url }}">目录</a></button>
         {{content}}
+        {% endif %}
     </div>
 
+    {% unless page.is_toc %}
     <script>
     let el = document.getElementsByTagName('blockquote');
     for (let e of el) {
@@ -413,6 +476,7 @@
     news.innerHTML = '◻ 忆·墨'
     h1ele.after(news)
     </script>
+    {% endunless %}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DS6WE929L"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
