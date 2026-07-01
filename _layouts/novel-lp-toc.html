@@ -6,11 +6,13 @@
     <meta name="color-scheme" content="light">
     <title>Living Project - Content</title>
 </head>
-<body bgcolor="#eeeeee" text="#141414" style="margin:0;background-color:#eeeeee;color:#444;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
-    <div style="max-width:30rem;margin:0 auto;position:relative;">
-        <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;font-weight:bold;text-indent:6px;line-height:3rem;color:#141414;-webkit-text-fill-color:#141414;background:linear-gradient(-63deg, rgba(0,0,0,0) 49%, #268f04 49.5%, #268f04 50.5%, rgba(0,0,0,0) 51%);">目录</div>
-        <h2 style="margin:0;padding:40px 18px 20px 57px;font-size:17px;font-weight:normal;line-height:1.42;color:#141414;-webkit-text-fill-color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">Living Project / 不可接触的</h2>
-        <ul style="margin:0;padding:0 25px;list-style:none;">
+<body bgcolor="#eeeeee" text="#444444" style="margin:0 25px;background-color:#eeeeee;color:#444;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
+    <div style="max-width:30rem;margin:0 auto;padding-top:30px;">
+        <div style="display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;margin:0 0 18px 0;">
+            <div style="-webkit-box-flex:0;flex:0 0 5rem;width:5rem;height:3rem;line-height:3rem;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;background:linear-gradient(-63deg, rgba(0,0,0,0) 49%, #268f04 49.5%, #268f04 50.5%, rgba(0,0,0,0) 51%);">目录</div>
+            <h2 style="-webkit-box-flex:1;flex:1;margin:0 0 0 4px;padding:0;font-size:17px;font-weight:normal;line-height:1.42;color:#141414;-webkit-text-fill-color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">Living Project / 不可接触的</h2>
+        </div>
+        <ul style="margin:0;padding:0;list-style:none;">
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
                 {% assign docs = collection.docs | sort: 'index'  %}
