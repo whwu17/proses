@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'jekyll', '3.9.2'
 
+# webrick is no longer part of the Ruby standard library as of Ruby 3.0,
+# but Jekyll 3.x's built-in dev server (`jekyll serve`) still requires it.
+gem 'webrick', '~> 1.8'
+
 group :jekyll_plugins do
   gem 'jekyll-archives', '2.1.1'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
