@@ -6,19 +6,11 @@
     <meta name="color-scheme" content="light">
     <title>Living Project - Content</title>
 </head>
-<body bgcolor="#eeeeee" text="#141414" style="margin:0;padding:0;background-color:#eeeeee;color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
-    <div style="max-width:30rem;margin:0 auto;padding:15px;">
-        <div style="padding-top:38px;margin-bottom:12px;min-height:55px;">
-            <div style="float:left;width:6rem;height:3rem;position:relative;font-weight:bold;color:#141414;-webkit-text-fill-color:#141414;">
-                <svg aria-hidden="true" width="96" height="48" viewBox="0 0 96 48" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;">
-                    <path d="M0 48 L44 6 L46 6 L2 48 Z" fill="#268f04"></path>
-                </svg>
-                <span style="position:relative;display:block;height:3rem;line-height:3rem;text-indent:6px;color:#141414;-webkit-text-fill-color:#141414;">目录</span>
-            </div>
-            <h2 style="margin:5px 0 0 65px;padding:0;height:50px;line-height:50px;font-size:17px;font-weight:normal;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#141414;-webkit-text-fill-color:#141414;">Dreaming Project / 可以接触的</h2>
-            <div style="clear:both;"></div>
-        </div>
-        <ul style="margin:0;padding:0;list-style:none;">
+<body bgcolor="#eeeeee" text="#141414" style="margin:0;background-color:#eeeeee;color:#444;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-text-fill-color:#141414;">
+    <div style="max-width:30rem;margin:0 auto;position:relative;">
+        <div style="position:absolute;top:38px;left:0;width:6rem;height:3rem;font-weight:bold;text-indent:6px;line-height:3rem;color:#141414;-webkit-text-fill-color:#141414;background:linear-gradient(-55deg, rgba(0,0,0,0) 49%, #268f04 49.5%, #268f04 50.5%, rgba(0,0,0,0) 51%);">目录</div>
+        <h2 style="margin:0;padding:40px 18px 20px 57px;font-size:17px;font-weight:normal;line-height:1.42;color:#141414;-webkit-text-fill-color:#141414;font-family:'Comic Sans MS',cursive,'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">Dreaming Project / 可以接触的</h2>
+        <ul style="margin:0;padding:0 25px;list-style:none;">
             {% for collection in site.collections %}
             {% if collection.label == "novels" %}
                 {% assign docs = collection.docs | sort: 'index'  %}
