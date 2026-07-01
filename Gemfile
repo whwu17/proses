@@ -7,15 +7,14 @@ gem 'jekyll', '3.9.2'
 gem 'webrick', '~> 1.8'
 
 group :jekyll_plugins do
-  gem 'jekyll-archives', '2.1.1'
-  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-  gem 'jekyll-feed', '0.15.1'
-  gem 'jekyll-paginate', '1.1.0'
-  gem 'jekyll-seo-tag', '2.4.0'
+  # Only jekyll-sitemap is actually wired up (robots.txt links to sitemap.xml).
   gem 'jekyll-sitemap', '1.4.0'
-  gem 'jekyll-redirect-from', '0.16.0'
-  gem 'kramdown-parser-gfm', '1.1.0'
+
+  # Markdown engine (Jekyll defaults to kramdown with GFM input).
   gem 'kramdown', '2.3.2'
-  gem 'eventmachine', '1.2.7', git: 'https://github.com/eventmachine/eventmachine.git', tag: 'v1.2.7'
+  gem 'kramdown-parser-gfm', '1.1.0'
+
+  # Windows-only helpers (no-ops elsewhere).
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 end
