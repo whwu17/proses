@@ -36,6 +36,11 @@ exclude:
   - Gemfile.lock
   - README.md
   - LICENCE
+  # Defining `exclude` overrides Jekyll's defaults, so re-exclude the gem
+  # install dir. CI (ruby/setup-ruby) installs gems into vendor/bundle inside
+  # the repo; without this Jekyll tries to build the gems' own templates.
+  - vendor
+  - .bundle
 
 sass:
   sass_dir: .
