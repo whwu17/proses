@@ -7,10 +7,11 @@ permalink: /
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Living Project</title>
-  <meta http-equiv="refresh" content="0; url=lp/toc/">
-  <link rel="canonical" href="lp/toc/">
 </head>
 <body>
-  <p><a href="lp/toc/">Living Project — 目录</a></p>
+  <p><a href="{{ '/lp/toc/' | relative_url }}">Living Project — 目录</a></p>
+  <script>
+    window.location.replace('{{ '/lp/toc/' | relative_url }}');
+  </script>
 </body>
 </html>
